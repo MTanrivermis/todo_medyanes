@@ -4,7 +4,8 @@ import React, { useEffect, useState } from "react";
 import { TrashIcon, PencilSquareIcon } from "@heroicons/react/24/outline";
 import { getAPI, postAPI } from "@/lib/services/fetchAPI";
 import useTodosStore from "@/lib/store";
-import Loading from "@/components/Loading";
+import Loading from "./Loading";
+// import Loading from "@/components/Loading";
 
 const ListTodos = () => {
   const { todos, toggleTodo, deleteTodo, editTodo, setTodos } = useTodosStore();
@@ -64,11 +65,9 @@ const ListTodos = () => {
         console.error(res.error);
         return;
       }
-      console.log(res)
       setTodos(res);
       setLoading(false);
     }).catch((err) => {
-      console.log(err);
       setLoading(false);
     });
   }, []);
